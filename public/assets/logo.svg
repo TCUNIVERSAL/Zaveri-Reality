@@ -1,0 +1,19 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top Horizontal Bar -->
+  <rect x="0" y="0" width="100" height="16" fill="currentColor" />
+  
+  <!-- Diagonal Z-beam -->
+  <polygon points="0,67 0,51 72,16 99,16 0,76" fill="currentColor" />
+  
+  <!-- Pillar 1 (Left) -->
+  <rect x="25" y="58" width="12" height="26" fill="currentColor" />
+  
+  <!-- Pillar 2 (Middle) -->
+  <rect x="48" y="44" width="12" height="40" fill="currentColor" />
+  
+  <!-- Pillar 3 (Right) -->
+  <rect x="75" y="24" width="25" height="60" fill="currentColor" />
+  
+  <!-- Bottom Horizontal Bar -->
+  <rect x="0" y="84" width="100" height="16" fill="currentColor" />
+</svg>
