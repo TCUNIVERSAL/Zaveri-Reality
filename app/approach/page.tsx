@@ -1,4 +1,4 @@
-import Image from "next/image";
+import OptimizedImage from "@/components/OptimizedImage";
 import CubeButton from "@/components/CubeButton";
 
 export default function ApproachPage() {
@@ -58,7 +58,7 @@ export default function ApproachPage() {
       {/* Hero Architectural Image */}
       <section className="px-4 lg:px-8 max-w-7xl mx-auto mb-24">
         <div className="relative aspect-[16/9] rounded-sm overflow-hidden shadow-2xl">
-          <Image
+          <OptimizedImage
             src="/assets/barsana/barsana-18.jpg"
             alt="Zaveri Realty Master Layout View"
             fill

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import OptimizedImage from "@/components/OptimizedImage";
 import Link from "next/link";
 import { LayoutGrid, List as ListIcon, ArrowUpRight } from "lucide-react";
 import { projects, Project } from "@/data/projects";
@@ -99,7 +99,7 @@ export default function WorksPage() {
                 href={`/work/${project.slug}`}
                 className="block relative aspect-[4/3] rounded-sm overflow-hidden bg-black/10 shadow-md focus:outline-none focus:ring-2 focus:ring-accent"
               >
-                <Image
+                <OptimizedImage
                   src={project.heroImage}
                   alt={project.title}
                   fill
@@ -110,7 +110,7 @@ export default function WorksPage() {
                 <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-wider bg-black/75 backdrop-blur-md px-3 py-1 text-white rounded-sm">
                   {project.category}
                 </div>
-                {project.status === "Upcoming" && (
+                {project.status === "Upcoming" && project.category !== "Upcoming" && (
                   <div className="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-wider bg-accent text-black font-bold px-3 py-1 rounded-sm">
                     Upcoming
                   </div>

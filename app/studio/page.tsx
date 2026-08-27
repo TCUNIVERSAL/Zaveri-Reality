@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import OptimizedImage from "@/components/OptimizedImage";
 import Link from "next/link";
 import CubeButton from "@/components/CubeButton";
 import RollLink from "@/components/RollLink";
@@ -106,7 +106,7 @@ export default function StudioPage() {
           </div>
 
           <div className="lg:col-span-7 relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
-            <Image
+            <OptimizedImage
               src="/assets/barsana/barsana-03.jpg"
               alt="Zaveri Realty Architecture"
               fill
@@ -194,7 +194,7 @@ export default function StudioPage() {
           {/* Dynamic Image Display */}
           <div className="lg:col-span-5 sticky top-28 hidden lg:block">
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden shadow-2xl bg-black">
-              <Image
+              <OptimizedImage
                 src={team[activeTeamIndex].image}
                 alt={team[activeTeamIndex].name}
                 fill

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import OptimizedImage from "@/components/OptimizedImage";
 import Link from "next/link";
 import { useState } from "react";
 import CubeButton from "@/components/CubeButton";
@@ -29,7 +29,7 @@ export default function BarsanaProjectPage() {
       {/* 1. PROJECT HERO */}
       <section className="relative w-full min-h-[90vh] flex flex-col justify-end pt-28 pb-16 px-4 lg:px-8 bg-[#090e18] text-white">
         <div className="absolute inset-0 z-0">
-          <Image
+          <OptimizedImage
             src="/assets/barsana/barsana-02.jpg"
             alt="Barsana Grand Classical Entrance at Night"
             fill
@@ -41,14 +41,18 @@ export default function BarsanaProjectPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-accent mb-6">
-            <Link href="/works" className="hover:underline">
-              Portfolio
+          {/* Breadcrumb Navigation Trail */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-grey-300 mb-6">
+            <Link href="/" className="hover:text-accent transition-colors">
+              Home
             </Link>
-            <span>/</span>
-            <span>Signature Luxury Villa Enclave</span>
-          </div>
+            <span className="text-grey-500">/</span>
+            <Link href="/works" className="hover:text-accent transition-colors">
+              Works
+            </Link>
+            <span className="text-grey-500">/</span>
+            <span className="text-accent font-bold">Barsana</span>
+          </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-8">
@@ -114,7 +118,7 @@ export default function BarsanaProjectPage() {
           </div>
 
           <div className="lg:col-span-6 relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
-            <Image
+            <OptimizedImage
               src="/assets/barsana/barsana-03.jpg"
               alt="Barsana State of Happiness Entrance Pavilion"
               fill
@@ -148,7 +152,7 @@ export default function BarsanaProjectPage() {
           {/* Photo Gallery Grid */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
             <div className="md:col-span-8 relative min-h-[360px] md:min-h-[480px] rounded-sm overflow-hidden shadow-xl group">
-              <Image
+              <OptimizedImage
                 src="/assets/barsana/barsana-05.jpg"
                 alt="Barsana Swimming Pool & Clubhouse at Dusk"
                 fill
@@ -168,7 +172,7 @@ export default function BarsanaProjectPage() {
 
             <div className="md:col-span-4 flex flex-col gap-6">
               <div className="relative h-56 rounded-sm overflow-hidden shadow-md group">
-                <Image
+                <OptimizedImage
                   src="/assets/barsana/barsana-04.jpg"
                   alt="Clubhouse Grand Elevation"
                   fill
@@ -182,7 +186,7 @@ export default function BarsanaProjectPage() {
               </div>
 
               <div className="relative h-56 rounded-sm overflow-hidden shadow-md group">
-                <Image
+                <OptimizedImage
                   src="/assets/barsana/barsana-06.jpg"
                   alt="Gym, Banquet Hall & Indoor Games"
                   fill
@@ -242,7 +246,7 @@ export default function BarsanaProjectPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Temple Feature */}
           <div className="lg:col-span-6 relative min-h-[400px] rounded-sm overflow-hidden shadow-2xl group">
-            <Image
+            <OptimizedImage
               src="/assets/barsana/barsana-09.jpg"
               alt="Barsana Sacred Temple at Night"
               fill
@@ -266,7 +270,7 @@ export default function BarsanaProjectPage() {
           {/* Garden & Gazebo Feature */}
           <div className="lg:col-span-6 flex flex-col justify-between gap-6">
             <div className="relative aspect-[16/9] rounded-sm overflow-hidden shadow-xl group">
-              <Image
+              <OptimizedImage
                 src="/assets/barsana/barsana-07.jpg"
                 alt="Barsana Botanical Garden with Lily Pond & Bridge"
                 fill
@@ -280,7 +284,7 @@ export default function BarsanaProjectPage() {
             </div>
 
             <div className="relative aspect-[16/9] rounded-sm overflow-hidden shadow-xl group">
-              <Image
+              <OptimizedImage
                 src="/assets/barsana/barsana-11.jpg"
                 alt="Barsana Gazebo & Campfire Lounge"
                 fill
@@ -311,7 +315,7 @@ export default function BarsanaProjectPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden shadow-xl group">
-              <Image
+              <OptimizedImage
                 src="/assets/barsana/barsana-12.jpg"
                 alt="Luxury Living Room & Kitchen"
                 fill
@@ -325,7 +329,7 @@ export default function BarsanaProjectPage() {
             </div>
 
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden shadow-xl group">
-              <Image
+              <OptimizedImage
                 src="/assets/barsana/barsana-13.jpg"
                 alt="Master Bedroom & Balcony"
                 fill
@@ -339,7 +343,7 @@ export default function BarsanaProjectPage() {
             </div>
 
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden shadow-xl group">
-              <Image
+              <OptimizedImage
                 src="/assets/barsana/barsana-15.jpg"
                 alt="Villa Night Elevation"
                 fill
@@ -359,7 +363,7 @@ export default function BarsanaProjectPage() {
       <section className="py-20 px-4 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 sm:p-12 rounded-sm border border-contentColor/10 shadow-lg">
           <div className="relative aspect-[16/10] rounded-sm overflow-hidden shadow-md">
-            <Image
+            <OptimizedImage
               src="/assets/barsana/barsana-14.jpg"
               alt="100% Renewable Energy and Golf Carts"
               fill
@@ -439,7 +443,7 @@ export default function BarsanaProjectPage() {
             {selectedPlanTab === "ground" && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-8 relative aspect-[16/10] rounded-sm overflow-hidden bg-[#1a233a]">
-                  <Image
+                  <OptimizedImage
                     src="/assets/barsana/barsana-10.jpg"
                     alt="Ground Floor and First Floor Layout Plan"
                     fill
@@ -469,7 +473,7 @@ export default function BarsanaProjectPage() {
             {selectedPlanTab === "master" && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-8 relative aspect-[16/10] rounded-sm overflow-hidden bg-[#1a233a]">
-                  <Image
+                  <OptimizedImage
                     src="/assets/barsana/barsana-16.jpg"
                     alt="Barsana Master Layout Plot Inventory"
                     fill
@@ -569,7 +573,7 @@ export default function BarsanaProjectPage() {
           </div>
 
           <div className="lg:col-span-7 relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl bg-[#201c18]">
-            <Image
+            <OptimizedImage
               src="/assets/barsana/barsana-19.jpg"
               alt="Barsana Location Map & Key Landmarks"
               fill
@@ -583,9 +587,19 @@ export default function BarsanaProjectPage() {
       {/* 9. NEXT PROJECT TRANSITION */}
       <section className="bg-black text-white py-24 px-4 lg:px-8 text-center border-t border-white/10">
         <div className="max-w-4xl mx-auto space-y-6">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-            Next Project
-          </span>
+          <div className="flex items-center justify-center">
+            <Link
+              href="/works"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-grey-400 hover:text-accent transition-colors"
+            >
+              ← Back to All Works
+            </Link>
+          </div>
+          <div className="pt-2">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-accent font-semibold block">
+              Next Project
+            </span>
+          </div>
           <h2 className="font-serif text-4xl sm:text-6xl font-bold uppercase">
             The Woodland Villa
           </h2>

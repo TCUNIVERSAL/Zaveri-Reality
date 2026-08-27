@@ -131,7 +131,7 @@ export default function Footer() {
               <div className="pt-2">
                 <span className="text-grey-400 block text-[10px] uppercase tracking-wider">Location</span>
                 <p className="text-grey-300 text-xs font-sans mt-0.5 leading-relaxed">
-                  Near Seven Sky & D-Mart, Bhuj - Kutch, Gujarat
+                  {companyDetails.address}
                 </p>
               </div>
             </div>

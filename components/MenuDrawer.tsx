@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu as MenuIcon, X, Phone, Instagram, MessageSquare, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import RollLink from "./RollLink";
@@ -41,11 +42,20 @@ export default function MenuDrawer() {
     };
   }, [isOpen]);
 
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Works & Portfolio", href: "/works" },
-    { label: "Barsana (Featured)", href: "/work/barsana" },
+    { label: "Barsana (Signature)", href: "/work/barsana" },
     { label: "The Woodland Villa (Upcoming)", href: "/work/the-woodland-villa" },
+    { label: "Royal Palms Estate", href: "/work/royal-palms-estate" },
+    { label: "The Oasis Residences", href: "/work/the-oasis-residences" },
+    { label: "Vrindavan Greens", href: "/work/vrindavan-greens" },
     { label: "Our Studio", href: "/studio" },
     { label: "Our Approach", href: "/approach" },
     { label: "Contact & Inquiries", href: "/contact" },

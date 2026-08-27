@@ -1,27 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
 import CubeButton from "@/components/CubeButton";
 import RollLink from "@/components/RollLink";
-import { companyDetails, services } from "@/data/services";
-import { ArrowDown, Sparkles, Compass, ShieldCheck, Sun, Trees, MessageSquare, Phone } from "lucide-react";
+import { companyDetails } from "@/data/services";
+import { ArrowDown, MessageSquare, Phone } from "lucide-react";
 
 interface CinematicOverlayProps {
-  progress: number; // 0.0 to 1.0
+  currentScene: number; // 1 to 6
   onJumpToScene: (progress: number) => void;
 }
 
-export default function CinematicOverlay({ progress, onJumpToScene }: CinematicOverlayProps) {
-  // Current active scene calculation
-  let currentScene = 1;
-  if (progress >= 0.85) currentScene = 6;
-  else if (progress >= 0.68) currentScene = 5;
-  else if (progress >= 0.48) currentScene = 4;
-  else if (progress >= 0.30) currentScene = 3;
-  else if (progress >= 0.12) currentScene = 2;
-
+export default function CinematicOverlay({ currentScene, onJumpToScene }: CinematicOverlayProps) {
   const scenes = [
     { num: "01", title: "Arrival", targetProgress: 0.0 },
     { num: "02", title: "Colonnade", targetProgress: 0.20 },
@@ -32,39 +22,37 @@ export default function CinematicOverlay({ progress, onJumpToScene }: CinematicO
   ];
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-10 flex flex-col justify-between p-4 lg:p-8">
+    <div className="fixed inset-0 pointer-events-none z-10 flex flex-col justify-between p-4 lg:p-8 overflow-hidden">
       {/* Spacer to prevent any top overlap with the fixed navbar */}
       <div className="w-full h-16 lg:h-20" aria-hidden="true" />
 
       {/* CENTER STAGE CHOREOGRAPHY (DYNAMIC TYPOGRAPHY & SCENE NARRATIVE) */}
       <div className="my-auto max-w-6xl mx-auto w-full">
-        {/* SCENE 1: THE ARRIVAL [0% - 15%] */}
-        {progress < 0.16 && (
+        {/* SCENE 1: THE ARRIVAL */}
+        {currentScene === 1 && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.6 }}
             className="text-center text-white space-y-6"
           >
             <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent block">
               A Cinematic Architectural Experience
             </span>
-            <h1 className="font-serif font-bold text-6xl sm:text-8xl lg:text-9xl uppercase tracking-tight leading-[0.9] text-white select-none">
+            <h1 className="font-serif font-bold text-6xl sm:text-8xl lg:text-9xl uppercase tracking-tight leading-[0.9] text-white select-none" style={{ textShadow: '0 4px 30px rgba(0,0,0,0.8), 0 0 60px rgba(0,0,0,0.5)' }}>
               Zaveri Realty
             </h1>
-            <p className="font-serif italic text-xl sm:text-3xl text-white/90 max-w-2xl mx-auto">
+            <p className="font-serif italic text-xl sm:text-3xl text-white/90 max-w-2xl mx-auto" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.7)' }}>
               &ldquo;The Signature of luxury living&rdquo;
             </p>
           </motion.div>
         )}
 
-        {/* SCENE 2: THE COLONNADE OF BARSANA [16% - 32%] */}
-        {progress >= 0.16 && progress < 0.35 && (
+        {/* SCENE 2: THE COLONNADE OF BARSANA */}
+        {currentScene === 2 && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-white"
           >
@@ -91,12 +79,11 @@ export default function CinematicOverlay({ progress, onJumpToScene }: CinematicO
           </motion.div>
         )}
 
-        {/* SCENE 3: THE SACRED TEMPLE & GROVE [35% - 52%] */}
-        {progress >= 0.35 && progress < 0.55 && (
+        {/* SCENE 3: THE SACRED TEMPLE & GROVE */}
+        {currentScene === 3 && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.5 }}
             className="text-center text-white space-y-6 max-w-3xl mx-auto"
           >
@@ -118,12 +105,11 @@ export default function CinematicOverlay({ progress, onJumpToScene }: CinematicO
           </motion.div>
         )}
 
-        {/* SCENE 4: THE CLUBHOUSE & AZURE POOL [55% - 72%] */}
-        {progress >= 0.55 && progress < 0.74 && (
+        {/* SCENE 4: THE CLUBHOUSE & AZURE POOL */}
+        {currentScene === 4 && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-white"
           >
@@ -150,12 +136,11 @@ export default function CinematicOverlay({ progress, onJumpToScene }: CinematicO
           </motion.div>
         )}
 
-        {/* SCENE 5: THE WOODLAND VILLA [74% - 88%] */}
-        {progress >= 0.74 && progress < 0.90 && (
+        {/* SCENE 5: THE WOODLAND VILLA */}
+        {currentScene === 5 && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.5 }}
             className="text-center text-white space-y-6 max-w-3xl mx-auto"
           >
@@ -174,8 +159,8 @@ export default function CinematicOverlay({ progress, onJumpToScene }: CinematicO
           </motion.div>
         )}
 
-        {/* SCENE 6: THE HORIZON & DIRECT INQUIRY [88% - 100%] */}
-        {progress >= 0.90 && (
+        {/* SCENE 6: THE HORIZON & DIRECT INQUIRY */}
+        {currentScene === 6 && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -226,12 +211,11 @@ export default function CinematicOverlay({ progress, onJumpToScene }: CinematicO
         )}
       </div>
 
-      {/* SCROLL DOWN TO ENTER THE WORLD PILL (Positioned down in dark bottom section) */}
-      {progress < 0.16 && (
+      {/* SCROLL DOWN TO ENTER THE WORLD PILL */}
+      {currentScene === 1 && (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 15 }}
           transition={{ duration: 0.4 }}
           className="mx-auto mb-3 pointer-events-auto"
         >

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -10,16 +10,27 @@ import CubeButton from "@/components/CubeButton";
 import RollLink from "@/components/RollLink";
 import { projects } from "@/data/projects";
 import { services, companyDetails } from "@/data/services";
-import { ArrowUpRight, CheckCircle2, Phone, MessageSquare, Compass, Sparkles, Sun, Trees } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export default function HomePage() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const scrollProgressRef = useRef(0);
+  const mousePosRef = useRef({ x: 0, y: 0 });
+  const [currentScene, setCurrentScene] = useState(1);
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
   const [activeValueIndex, setActiveValueIndex] = useState(0);
   const timelineTrackRef = useRef<HTMLDivElement>(null);
 
-  // Scroll listener to update 3D WebGL timeline
+  // Compute which scene is active from scroll progress (avoids per-pixel re-renders)
+  const computeScene = useCallback((p: number): number => {
+    if (p >= 0.90) return 6;
+    if (p >= 0.74) return 5;
+    if (p >= 0.55) return 4;
+    if (p >= 0.35) return 3;
+    if (p >= 0.16) return 2;
+    return 1;
+  }, []);
+
+  // Scroll listener — updates ref continuously, only triggers re-render on scene change
   useEffect(() => {
     const handleScroll = () => {
       const track = timelineTrackRef.current;
@@ -28,20 +39,24 @@ export default function HomePage() {
       const totalScrollable = track.scrollHeight - window.innerHeight;
       const scrolled = -rect.top;
       const p = Math.max(0, Math.min(1, scrolled / totalScrollable));
-      setScrollProgress(p);
+      scrollProgressRef.current = p;
+
+      const newScene = computeScene(p);
+      setCurrentScene((prev) => (prev !== newScene ? newScene : prev));
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [computeScene]);
 
-  // Mouse move listener for cinematic cursor depth
+  // Mouse move listener — ref only, no state updates needed
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = (e.clientY / window.innerHeight) * 2 - 1;
-      setMousePos({ x, y });
+      mousePosRef.current = {
+        x: (e.clientX / window.innerWidth) * 2 - 1,
+        y: (e.clientY / window.innerHeight) * 2 - 1,
+      };
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -49,7 +64,7 @@ export default function HomePage() {
   }, []);
 
   // Jump to specific scene in 3D timeline
-  const handleJumpToScene = (targetP: number) => {
+  const handleJumpToScene = useCallback((targetP: number) => {
     const track = timelineTrackRef.current;
     if (!track) return;
     const totalScrollable = track.scrollHeight - window.innerHeight;
@@ -58,7 +73,7 @@ export default function HomePage() {
       top: targetScrollTop,
       behavior: "smooth",
     });
-  };
+  }, []);
 
   const values = [
     {
@@ -81,10 +96,10 @@ export default function HomePage() {
   return (
     <div className="w-full relative bg-[#080b12] text-white">
       {/* 1. THREE.JS WEBGL 3D INTERACTIVE WORLD */}
-      <CinematicCanvas scrollProgress={scrollProgress} mousePos={mousePos} />
+      <CinematicCanvas scrollProgressRef={scrollProgressRef} mousePosRef={mousePosRef} />
 
       {/* 2. SPATIAL CINEMATIC OVERLAY (KINETIC TEXT & 6-SCENE TIMELINE) */}
-      <CinematicOverlay progress={scrollProgress} onJumpToScene={handleJumpToScene} />
+      <CinematicOverlay currentScene={currentScene} onJumpToScene={handleJumpToScene} />
 
       {/* 3. 3D SCROLL TIMELINE TRACK (Drives camera choreography through 6 scenes) */}
       <div ref={timelineTrackRef} className="relative w-full h-[600vh] pointer-events-none z-0" />
