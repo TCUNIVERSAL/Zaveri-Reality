@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import OptimizedImage from "@/components/OptimizedImage";
 import Link from "next/link";
 import CubeButton from "@/components/CubeButton";
 import { companyDetails } from "@/data/services";
@@ -8,11 +8,11 @@ import { Trees, Compass, Sun, Shield, Sparkles, MessageSquare, Phone } from "luc
 
 export default function WoodlandVillaPage() {
   return (
-    <div className="w-full bg-bgColor text-contentColor">
+    <div className="w-full bg-bgColor text-contentColor overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[85vh] flex flex-col justify-end pt-28 pb-16 px-4 lg:px-8 bg-[#0b120f] text-white">
+      <section className="relative w-full min-h-[85vh] flex flex-col justify-end pt-28 pb-16 px-4 lg:px-8 bg-[#0b120f] text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
+          <OptimizedImage
             src="/assets/barsana/barsana-18.jpg"
             alt="The Woodland Villa Aerial Forest Canopy"
             fill
@@ -24,13 +24,18 @@ export default function WoodlandVillaPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-accent mb-6">
-            <Link href="/works" className="hover:underline">
-              Portfolio
+          {/* Breadcrumb Navigation Trail */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-grey-300 mb-6">
+            <Link href="/" className="hover:text-accent transition-colors">
+              Home
             </Link>
-            <span>/</span>
-            <span>Upcoming Signature Edition</span>
-          </div>
+            <span className="text-grey-500">/</span>
+            <Link href="/works" className="hover:text-accent transition-colors">
+              Works
+            </Link>
+            <span className="text-grey-500">/</span>
+            <span className="text-accent font-bold">The Woodland Villa</span>
+          </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-8">
@@ -97,7 +102,7 @@ export default function WoodlandVillaPage() {
           </div>
 
           <div className="lg:col-span-6 relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
-            <Image
+            <OptimizedImage
               src="/assets/barsana/barsana-15.jpg"
               alt="Villa Architecture Preview"
               fill
@@ -143,6 +148,14 @@ export default function WoodlandVillaPage() {
       {/* Next Project Link */}
       <section className="bg-black text-white py-20 px-4 lg:px-8 text-center border-t border-white/10">
         <div className="max-w-4xl mx-auto space-y-4">
+          <div className="flex items-center justify-center mb-2">
+            <Link
+              href="/works"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-grey-400 hover:text-accent transition-colors"
+            >
+              ← Back to All Works
+            </Link>
+          </div>
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
             Featured Active Project
           </span>

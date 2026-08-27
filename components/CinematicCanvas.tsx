@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, MutableRefObject } from "react";
 import * as THREE from "three";
 
 interface CinematicCanvasProps {
-  scrollProgress: number; // 0 to 1
-  mousePos: { x: number; y: number };
+  scrollProgressRef: MutableRefObject<number>;
+  mousePosRef: MutableRefObject<{ x: number; y: number }>;
 }
 
-export default function CinematicCanvas({ scrollProgress, mousePos }: CinematicCanvasProps) {
+export default function CinematicCanvas({ scrollProgressRef, mousePosRef }: CinematicCanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const stateRef = useRef<{
     renderer: THREE.WebGLRenderer | null;
@@ -43,12 +43,6 @@ export default function CinematicCanvas({ scrollProgress, mousePos }: CinematicC
     animationFrameId: null,
     isReducedMotion: false,
   });
-
-  const scrollRef = useRef(scrollProgress);
-  scrollRef.current = scrollProgress;
-
-  const mouseRef = useRef(mousePos);
-  mouseRef.current = mousePos;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -103,107 +97,57 @@ export default function CinematicCanvas({ scrollProgress, mousePos }: CinematicC
     scene.add(pointLight);
     stateRef.current.pointLight = pointLight;
 
-    // 5. TEXTURE LOADER & ARCHITECTURAL 3D PLANES
-    const textureLoader = new THREE.TextureLoader();
-    const textures = [
-      textureLoader.load("/assets/barsana/barsana-02.jpg"),
-      textureLoader.load("/assets/barsana/barsana-03.jpg"),
-      textureLoader.load("/assets/barsana/barsana-09.jpg"),
-      textureLoader.load("/assets/barsana/barsana-05.jpg"),
-      textureLoader.load("/assets/barsana/barsana-07.jpg"),
-      textureLoader.load("/assets/barsana/barsana-18.jpg"),
-      textureLoader.load("/assets/barsana/barsana-15.jpg"),
-    ];
-
-    textures.forEach((t) => {
-      t.generateMipmaps = true;
-      t.minFilter = THREE.LinearMipmapLinearFilter;
-    });
-
+    // 5. ARCHITECTURAL 3D PLANES — created immediately with placeholder materials
+    // Textures load asynchronously so the scene renders instantly
+    const planeGeo = new THREE.PlaneGeometry(6.4, 4.0, 16, 16);
     const planes: THREE.Mesh[] = [];
 
-    // Scene 1: Arrival Monoliths [Z: 0 to -8]
-    const planeGeo = new THREE.PlaneGeometry(6.4, 4.0, 16, 16);
-    
-    // Portal 1 (Barsana Entrance at Dusk)
-    const mat1 = new THREE.MeshStandardMaterial({
-      map: textures[0],
-      roughness: 0.3,
-      metalness: 0.1,
-      side: THREE.DoubleSide,
-    });
-    const mesh1 = new THREE.Mesh(planeGeo, mat1);
-    mesh1.position.set(-1.2, 0.2, 2);
-    mesh1.rotation.y = 0.12;
-    scene.add(mesh1);
-    planes.push(mesh1);
+    const planeConfigs = [
+      { src: "/assets/barsana/barsana-02.jpg", pos: [-1.2, 0.2, 2], rotY: 0.12, rough: 0.3, metal: 0.1 },
+      { src: "/assets/barsana/barsana-03.jpg", pos: [2.4, -0.4, -6], rotY: -0.18, rough: 0.4, metal: 0.1 },
+      { src: "/assets/barsana/barsana-09.jpg", pos: [-2.2, 0.6, -14], rotY: 0.22, rough: 0.2, metal: 0.2 },
+      { src: "/assets/barsana/barsana-05.jpg", pos: [1.8, -0.2, -22], rotY: -0.15, rough: 0.15, metal: 0.3 },
+      { src: "/assets/barsana/barsana-07.jpg", pos: [-1.6, 0.4, -30], rotY: 0.18, rough: 0.35, metal: 0.1 },
+      { src: "/assets/barsana/barsana-18.jpg", pos: [0, 0, -38], rotY: 0, rough: 0.3, metal: 0.1 },
+    ];
 
-    // Portal 2 (Colonnade / Gate daylight)
-    const mat2 = new THREE.MeshStandardMaterial({
-      map: textures[1],
-      roughness: 0.4,
-      metalness: 0.1,
-      side: THREE.DoubleSide,
+    // Create planes instantly with dark placeholder materials
+    const materials: THREE.MeshStandardMaterial[] = [];
+    planeConfigs.forEach((cfg) => {
+      const mat = new THREE.MeshStandardMaterial({
+        color: new THREE.Color("#1a1a2e"),
+        roughness: cfg.rough,
+        metalness: cfg.metal,
+        side: THREE.DoubleSide,
+      });
+      materials.push(mat);
+      const mesh = new THREE.Mesh(planeGeo, mat);
+      mesh.position.set(cfg.pos[0], cfg.pos[1], cfg.pos[2]);
+      mesh.rotation.y = cfg.rotY;
+      scene.add(mesh);
+      planes.push(mesh);
     });
-    const mesh2 = new THREE.Mesh(planeGeo, mat2);
-    mesh2.position.set(2.4, -0.4, -6);
-    mesh2.rotation.y = -0.18;
-    scene.add(mesh2);
-    planes.push(mesh2);
 
-    // Portal 3 (Sacred Temple Pavilion)
-    const mat3 = new THREE.MeshStandardMaterial({
-      map: textures[2],
-      roughness: 0.2,
-      metalness: 0.2,
-      side: THREE.DoubleSide,
-    });
-    const mesh3 = new THREE.Mesh(planeGeo, mat3);
-    mesh3.position.set(-2.2, 0.6, -14);
-    mesh3.rotation.y = 0.22;
-    scene.add(mesh3);
-    planes.push(mesh3);
+    // Load textures asynchronously — scene is already visible
+    const textureLoader = new THREE.TextureLoader();
+    const loadedTextures: THREE.Texture[] = [];
 
-    // Portal 4 (Clubhouse & Azure Pool)
-    const mat4 = new THREE.MeshStandardMaterial({
-      map: textures[3],
-      roughness: 0.15,
-      metalness: 0.3,
-      side: THREE.DoubleSide,
+    planeConfigs.forEach((cfg, i) => {
+      textureLoader.load(cfg.src, (texture) => {
+        texture.generateMipmaps = true;
+        texture.minFilter = THREE.LinearMipmapLinearFilter;
+        materials[i].map = texture;
+        materials[i].color.set("#ffffff"); // Remove dark tint once texture arrives
+        materials[i].needsUpdate = true;
+        loadedTextures.push(texture);
+      });
     });
-    const mesh4 = new THREE.Mesh(planeGeo, mat4);
-    mesh4.position.set(1.8, -0.2, -22);
-    mesh4.rotation.y = -0.15;
-    scene.add(mesh4);
-    planes.push(mesh4);
-
-    // Portal 5 (Botanical Garden & Lily Pond)
-    const mat5 = new THREE.MeshStandardMaterial({
-      map: textures[4],
-      roughness: 0.35,
-      metalness: 0.1,
-      side: THREE.DoubleSide,
-    });
-    const mesh5 = new THREE.Mesh(planeGeo, mat5);
-    mesh5.position.set(-1.6, 0.4, -30);
-    mesh5.rotation.y = 0.18;
-    scene.add(mesh5);
-    planes.push(mesh5);
-
-    // Portal 6 (The Woodland Villa Forest Retreat)
-    const mat6 = new THREE.MeshStandardMaterial({
-      map: textures[5],
-      roughness: 0.3,
-      metalness: 0.1,
-      side: THREE.DoubleSide,
-    });
-    const mesh6 = new THREE.Mesh(planeGeo, mat6);
-    mesh6.position.set(0, 0, -38);
-    mesh6.rotation.y = 0;
-    scene.add(mesh6);
-    planes.push(mesh6);
 
     stateRef.current.planes = planes;
+
+    // Store base positions for absolute-positioned floating animation (prevents cumulative drift)
+    const planeBaseY = planes.map((m) => m.position.y);
+    const planeBaseRotY = planes.map((m) => m.rotation.y);
 
     // 6. FLOATING GOLDEN EMBERS & ATMOSPHERIC DUST PARTICLES
     const particleCount = 900;
@@ -260,9 +204,9 @@ export default function CinematicCanvas({ scrollProgress, mousePos }: CinematicC
     const animate = () => {
       const delta = clock.getDelta();
       const elapsed = clock.getElapsedTime();
-      const p = scrollRef.current; // 0 to 1
-      const mx = mouseRef.current.x;
-      const my = mouseRef.current.y;
+      const p = scrollProgressRef.current; // 0 to 1
+      const mx = mousePosRef.current.x;
+      const my = mousePosRef.current.y;
 
       const state = stateRef.current;
       if (!state.camera || !state.renderer || !state.scene) return;
@@ -321,12 +265,10 @@ export default function CinematicCanvas({ scrollProgress, mousePos }: CinematicC
         state.pointLight.position.set(targetX, targetY + 1.5, targetZ - 3);
       }
 
-      // Floating gentle animation for 3D architectural planes
+      // Floating gentle animation for 3D architectural planes (absolute positioning prevents drift)
       planes.forEach((mesh, index) => {
-        const floatOffset = Math.sin(elapsed * 0.8 + index * 1.5) * 0.08;
-        mesh.position.y += floatOffset * 0.01;
-        // Subtle tilt on hover
-        mesh.rotation.y += Math.sin(elapsed * 0.5 + index) * 0.0008;
+        mesh.position.y = planeBaseY[index] + Math.sin(elapsed * 0.8 + index * 1.5) * 0.04;
+        mesh.rotation.y = planeBaseRotY[index] + Math.sin(elapsed * 0.5 + index) * 0.015;
       });
 
       // Ambient particle drift
@@ -346,6 +288,16 @@ export default function CinematicCanvas({ scrollProgress, mousePos }: CinematicC
       if (stateRef.current.animationFrameId) {
         cancelAnimationFrame(stateRef.current.animationFrameId);
       }
+      // Dispose GPU resources to prevent memory leaks
+      loadedTextures.forEach((t) => t.dispose());
+      planes.forEach((mesh) => {
+        mesh.geometry.dispose();
+        if (mesh.material instanceof THREE.Material) {
+          mesh.material.dispose();
+        }
+      });
+      particleGeo.dispose();
+      particleMat.dispose();
       if (stateRef.current.renderer && container.contains(stateRef.current.renderer.domElement)) {
         container.removeChild(stateRef.current.renderer.domElement);
       }
