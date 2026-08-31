@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import OptimizedImage from "@/components/OptimizedImage";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import Link from "next/link";
-import CubeButton from "@/components/CubeButton";
-import RollLink from "@/components/RollLink";
+import CubeButton from "@/components/ui/CubeButton";
+import RollLink from "@/components/ui/RollLink";
 import { companyDetails } from "@/data/services";
 
 export default function StudioPage() {
@@ -16,35 +16,35 @@ export default function StudioPage() {
       role: "Founder & Managing Director",
       phone: "+91 81418 10432",
       bio: "With over two decades of leadership in Gujarat real estate, Rajesh Zaveri anchors the group's vision for transformative luxury master planning, ethical governance, and enduring community creation.",
-      image: "/assets/barsana/barsana-03.jpg",
+      image: "/images/projects/barsana/barsana-03.jpg",
     },
     {
       name: "Bhavy Zaveri",
       role: "Director of Development & Strategy",
       phone: "+91 91063 18607",
       bio: "Spearheading modern architectural innovation, sustainable solar infrastructure, and high-touch client advisory across all signature residential developments.",
-      image: "/assets/barsana/barsana-04.jpg",
+      image: "/images/projects/barsana/barsana-04.jpg",
     },
     {
       name: "Aarav Mehta",
       role: "Principal Architectural Consultant",
       phone: "8009318009",
       bio: "Specializing in classical proportion, courtyard microclimates, and earthquake-resilient luxury residential engineering.",
-      image: "/assets/barsana/barsana-05.jpg",
+      image: "/images/projects/barsana/barsana-05.jpg",
     },
     {
       name: "Pooja Solanki",
       role: "Interior Architecture Lead",
       phone: "8009318009",
       bio: "Crafting bespoke living spaces with natural stone, brass trims, bespoke lighting schemes, and ergonomic modern modular kitchens.",
-      image: "/assets/barsana/barsana-12.jpg",
+      image: "/images/projects/barsana/barsana-12.jpg",
     },
     {
       name: "Rohan Kothari",
       role: "Landscape & Horticultural Director",
       phone: "8009318009",
       bio: "Designing botanical ecosystems, sacred temple landscapes, lily ponds, and medicinal Ayurvedic flora across our gated estates.",
-      image: "/assets/barsana/barsana-07.jpg",
+      image: "/images/projects/barsana/barsana-07.jpg",
     },
   ];
 
@@ -107,7 +107,7 @@ export default function StudioPage() {
 
           <div className="lg:col-span-7 relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
             <OptimizedImage
-              src="/assets/barsana/barsana-03.jpg"
+              src="/images/projects/barsana/barsana-03.jpg"
               alt="Zaveri Realty Architecture"
               fill
               sizes="(min-width: 1024px) 58vw, 100vw"

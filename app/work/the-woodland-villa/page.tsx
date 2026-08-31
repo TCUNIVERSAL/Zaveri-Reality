@@ -1,8 +1,8 @@
 "use client";
 
-import OptimizedImage from "@/components/OptimizedImage";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import Link from "next/link";
-import CubeButton from "@/components/CubeButton";
+import CubeButton from "@/components/ui/CubeButton";
 import { companyDetails } from "@/data/services";
 import { Trees, Compass, Sun, Shield, Sparkles, MessageSquare, Phone } from "lucide-react";
 
@@ -13,7 +13,7 @@ export default function WoodlandVillaPage() {
       <section className="relative w-full min-h-[85vh] flex flex-col justify-end pt-28 pb-16 px-4 lg:px-8 bg-[#0b120f] text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <OptimizedImage
-            src="/assets/barsana/barsana-18.jpg"
+            src="/images/projects/barsana/barsana-18.jpg"
             alt="The Woodland Villa Aerial Forest Canopy"
             fill
             priority
@@ -103,7 +103,7 @@ export default function WoodlandVillaPage() {
 
           <div className="lg:col-span-6 relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
             <OptimizedImage
-              src="/assets/barsana/barsana-15.jpg"
+              src="/images/projects/barsana/barsana-15.jpg"
               alt="Villa Architecture Preview"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

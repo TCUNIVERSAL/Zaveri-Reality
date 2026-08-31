@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import OptimizedImage from "@/components/OptimizedImage";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import { Phone, Mail, Instagram, MessageSquare, MapPin, Send, CheckCircle } from "lucide-react";
-import CubeButton from "@/components/CubeButton";
-import RollLink from "@/components/RollLink";
+import CubeButton from "@/components/ui/CubeButton";
+import RollLink from "@/components/ui/RollLink";
 import { companyDetails } from "@/data/services";
 
 export default function ContactPage() {
@@ -46,7 +46,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-4xl mx-auto">
           <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-xl -rotate-1 hover:rotate-0 transition-transform duration-500">
             <OptimizedImage
-              src="/assets/barsana/barsana-02.jpg"
+              src="/images/projects/barsana/barsana-02.jpg"
               alt="Barsana Main Entrance"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
@@ -59,7 +59,7 @@ export default function ContactPage() {
 
           <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-xl rotate-1 hover:rotate-0 transition-transform duration-500">
             <OptimizedImage
-              src="/assets/barsana/barsana-09.jpg"
+              src="/images/projects/barsana/barsana-09.jpg"
               alt="Barsana Sacred Temple"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
