@@ -54,11 +54,10 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
-          scrolled || !isHomepage
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${scrolled || !isHomepage
             ? "bg-[#080b12]/90 backdrop-blur-xl border-b border-white/10 shadow-2xl py-3"
             : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-4"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between">
           {/* Brand Logo & Name */}
@@ -68,7 +67,7 @@ export default function Navbar() {
             aria-label="Zaveri Realty Group — Home"
           >
             <div className="w-8 h-8 flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
-              <Logo className="w-full h-full text-accent" size={32} color="#C29B38" />
+              <Logo className="w-full h-full text-accent" size={32} color="#c29b38f2" />
             </div>
             <div className="flex flex-col">
               <span className="font-serif font-bold text-base sm:text-lg tracking-wider text-white uppercase leading-none">
@@ -89,11 +88,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative font-mono text-[12px] uppercase tracking-wider font-semibold px-4 py-1.5 rounded-full transition-all duration-200 ${
-                  link.isActive
+                className={`relative font-mono text-[12px] uppercase tracking-wider font-semibold px-4 py-1.5 rounded-full transition-all duration-200 ${link.isActive
                     ? "text-black bg-accent font-bold shadow-md"
                     : "text-grey-300 hover:text-white hover:bg-white/10"
-                }`}
+                  }`}
               >
                 {link.label}
               </Link>
@@ -142,9 +140,8 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`py-3.5 flex items-center justify-between text-xl font-serif font-bold uppercase tracking-tight ${
-                      link.isActive ? "text-accent pl-2" : "text-white"
-                    }`}
+                    className={`py-3.5 flex items-center justify-between text-xl font-serif font-bold uppercase tracking-tight ${link.isActive ? "text-accent pl-2" : "text-white"
+                      }`}
                   >
                     <span>{link.label}</span>
                     <ArrowUpRight className="w-4 h-4 text-white/40" />
@@ -153,9 +150,8 @@ export default function Navbar() {
                 <Link
                   href="/work/barsana"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`py-3.5 flex items-center justify-between text-lg font-serif ${
-                    pathname === "/work/barsana" ? "text-accent pl-2" : "text-grey-300"
-                  }`}
+                  className={`py-3.5 flex items-center justify-between text-lg font-serif ${pathname === "/work/barsana" ? "text-accent pl-2" : "text-grey-300"
+                    }`}
                 >
                   <span>Barsana (Signature Villas)</span>
                   <ArrowUpRight className="w-4 h-4 text-white/40" />
@@ -163,9 +159,8 @@ export default function Navbar() {
                 <Link
                   href="/work/the-woodland-villa"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`py-3.5 flex items-center justify-between text-lg font-serif ${
-                    pathname === "/work/the-woodland-villa" ? "text-accent pl-2" : "text-grey-300"
-                  }`}
+                  className={`py-3.5 flex items-center justify-between text-lg font-serif ${pathname === "/work/the-woodland-villa" ? "text-accent pl-2" : "text-grey-300"
+                    }`}
                 >
                   <span>The Woodland Villa (Upcoming)</span>
                   <ArrowUpRight className="w-4 h-4 text-white/40" />
