@@ -67,7 +67,7 @@ export default function Navbar() {
             aria-label="Zaveri Realty Group — Home"
           >
             <div className="w-8 h-8 flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
-              <Logo className="w-full h-full text-accent" size={32} color="#c29b38f2" />
+              <Logo className="w-full h-full text-accent" size={32} color="#C29B38" />
             </div>
             <div className="flex flex-col">
               <span className="font-serif font-bold text-base sm:text-lg tracking-wider text-white uppercase leading-none">
