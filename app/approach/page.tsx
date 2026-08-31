@@ -1,5 +1,5 @@
-import OptimizedImage from "@/components/OptimizedImage";
-import CubeButton from "@/components/CubeButton";
+import OptimizedImage from "@/components/ui/OptimizedImage";
+import CubeButton from "@/components/ui/CubeButton";
 
 export default function ApproachPage() {
   const steps = [
@@ -59,7 +59,7 @@ export default function ApproachPage() {
       <section className="px-4 lg:px-8 max-w-7xl mx-auto mb-24">
         <div className="relative aspect-[16/9] rounded-sm overflow-hidden shadow-2xl">
           <OptimizedImage
-            src="/assets/barsana/barsana-18.jpg"
+            src="/images/projects/barsana/barsana-18.jpg"
             alt="Zaveri Realty Master Layout View"
             fill
             sizes="100vw"

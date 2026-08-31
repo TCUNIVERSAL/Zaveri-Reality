@@ -1,11 +1,7 @@
-export interface Service {
-  id: string;
-  title: string;
-  shortDesc: string;
-  fullDesc: string;
-  image: string;
-  features: string[];
-}
+import type { Service } from "@/types/service";
+
+export type { Service };
+
 
 export const services: Service[] = [
   {
@@ -14,7 +10,7 @@ export const services: Service[] = [
     shortDesc: "End-to-end guidance for acquiring luxury villas, residential plots, and premium commercial estates.",
     fullDesc:
       "We assist private buyers and investors in acquiring prime real estate with transparent documentation, clear title verification, and curated luxury options tailored to your family's future.",
-    image: "/assets/barsana/barsana-02.jpg",
+    image: "/images/projects/barsana/barsana-02.jpg",
     features: [
       "Curated Prime Inventory (Villas, Plots, Estates)",
       "Title Deed & Clear Legal Due Diligence",
@@ -28,7 +24,7 @@ export const services: Service[] = [
     shortDesc: "Strategic valuation, high-impact marketing, and qualified buyer matchmaking for your premier property.",
     fullDesc:
       "Leverage our deep market presence in Kutch and Gujarat to sell your property at true market value with discretion, speed, and seamless legal transfer.",
-    image: "/assets/barsana/barsana-15.jpg",
+    image: "/images/projects/barsana/barsana-15.jpg",
     features: [
       "Rigorous Market Valuation & Positioning",
       "High-Fidelity Architectural Photography & Marketing",
@@ -42,7 +38,7 @@ export const services: Service[] = [
     shortDesc: "Premium residential leasing and high-yield commercial rental management.",
     fullDesc:
       "Whether seeking an upscale residence for your family or leasing out high-value property assets, we handle tenant vetting, lease structuring, and asset care.",
-    image: "/assets/barsana/barsana-04.jpg",
+    image: "/images/projects/barsana/barsana-04.jpg",
     features: [
       "Vetted Corporate & Family Tenant Matching",
       "Customized Legal Tenancy Agreements",
@@ -56,7 +52,7 @@ export const services: Service[] = [
     shortDesc: "Bespoke architectural design, master planning, and turnkey gated community construction.",
     fullDesc:
       "From landmark projects like Barsana to private custom villas, our team oversees architecture, sustainable engineering, material sourcing, and master landscape design under one roof.",
-    image: "/assets/barsana/barsana-18.jpg",
+    image: "/images/projects/barsana/barsana-18.jpg",
     features: [
       "Comprehensive Master Planning & Landscaping",
       "100% Renewable Energy & Sustainable Systems",
@@ -70,7 +66,7 @@ export const services: Service[] = [
     shortDesc: "Strategic land acquisition, zoning feasibility, RERA compliance, and wealth preservation.",
     fullDesc:
       "Guiding families and institutional investors on legacy land parcels, layout optimization, governmental approvals, and long-term capital growth strategies across Gujarat.",
-    image: "/assets/barsana/barsana-16.jpg",
+    image: "/images/projects/barsana/barsana-16.jpg",
     features: [
       "Zoning & NA/NOC Clearances Advisory",
       "RERA Project Registration & Compliance",

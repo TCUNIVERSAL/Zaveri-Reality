@@ -1,32 +1,7 @@
-export interface Project {
-  id: string;
-  slug: string;
-  title: string;
-  subtitle: string;
-  category: "Residential" | "Luxury Villa" | "Upcoming" | "Commercial";
-  year: string;
-  status: "Completed" | "Under Construction" | "Upcoming" | "Ready to Move";
-  location: string;
-  client?: string;
-  heroImage: string;
-  galleryImages: string[];
-  description: string;
-  longDescription: string;
-  amenities?: string[];
-  specs?: {
-    category: string;
-    items: string[];
-  }[];
-  stats?: {
-    label: string;
-    value: string;
-  }[];
-  floorPlans?: {
-    title: string;
-    image: string;
-    details: string;
-  }[];
-}
+import type { Project } from "@/types/project";
+
+export type { Project };
+
 
 export const projects: Project[] = [
   {
@@ -39,22 +14,22 @@ export const projects: Project[] = [
     status: "Under Construction",
     location: "Bhuj, Gujarat",
     client: "Zaveri Realty Signature Collection",
-    heroImage: "/assets/barsana/barsana-02.jpg",
+    heroImage: "/images/projects/barsana/barsana-02.jpg",
     galleryImages: [
-      "/assets/barsana/barsana-03.jpg",
-      "/assets/barsana/barsana-04.jpg",
-      "/assets/barsana/barsana-05.jpg",
-      "/assets/barsana/barsana-06.jpg",
-      "/assets/barsana/barsana-07.jpg",
-      "/assets/barsana/barsana-08.jpg",
-      "/assets/barsana/barsana-09.jpg",
-      "/assets/barsana/barsana-10.jpg",
-      "/assets/barsana/barsana-11.jpg",
-      "/assets/barsana/barsana-12.jpg",
-      "/assets/barsana/barsana-13.jpg",
-      "/assets/barsana/barsana-14.jpg",
-      "/assets/barsana/barsana-15.jpg",
-      "/assets/barsana/barsana-18.jpg",
+      "/images/projects/barsana/barsana-03.jpg",
+      "/images/projects/barsana/barsana-04.jpg",
+      "/images/projects/barsana/barsana-05.jpg",
+      "/images/projects/barsana/barsana-06.jpg",
+      "/images/projects/barsana/barsana-07.jpg",
+      "/images/projects/barsana/barsana-08.jpg",
+      "/images/projects/barsana/barsana-09.jpg",
+      "/images/projects/barsana/barsana-10.jpg",
+      "/images/projects/barsana/barsana-11.jpg",
+      "/images/projects/barsana/barsana-12.jpg",
+      "/images/projects/barsana/barsana-13.jpg",
+      "/images/projects/barsana/barsana-14.jpg",
+      "/images/projects/barsana/barsana-15.jpg",
+      "/images/projects/barsana/barsana-18.jpg",
     ],
     description:
       "Experience the true essence of luxurious living with Barsana. A master-planned gated enclave combining sacred serenity, world-class clubhouse leisure, and architectural distinction.",
@@ -127,17 +102,17 @@ export const projects: Project[] = [
     floorPlans: [
       {
         title: "Ground Floor Plan",
-        image: "/assets/barsana/barsana-10.jpg",
+        image: "/images/projects/barsana/barsana-10.jpg",
         details: "Living room (14'6\" x 16'1\"), Dining (9'3\" x 10'7\"), Kitchen (9'0\" x 12'4\"), Courtyard, Open Space & Garden Area.",
       },
       {
         title: "First Floor Plan",
-        image: "/assets/barsana/barsana-10.jpg",
+        image: "/images/projects/barsana/barsana-10.jpg",
         details: "Master Bedroom (14'4\" x 16'1\") with attached dressing & bath, Children's Bedroom (14'0\" x 11'7\"), Passage & Balcony.",
       },
       {
         title: "Master Site Layout",
-        image: "/assets/barsana/barsana-16.jpg",
+        image: "/images/projects/barsana/barsana-16.jpg",
         details: "Plot division from Plot 1 to Plot 92, central avenue, clubhouse zone, sports arena, temple & party lawn.",
       },
     ],
@@ -152,12 +127,12 @@ export const projects: Project[] = [
     status: "Upcoming",
     location: "Kutch Foothills, Gujarat",
     client: "Zaveri Realty Private Reserve",
-    heroImage: "/assets/barsana/barsana-18.jpg",
+    heroImage: "/images/projects/barsana/barsana-18.jpg",
     galleryImages: [
-      "/assets/barsana/barsana-15.jpg",
-      "/assets/barsana/barsana-07.jpg",
-      "/assets/barsana/barsana-08.jpg",
-      "/assets/barsana/barsana-11.jpg",
+      "/images/projects/barsana/barsana-15.jpg",
+      "/images/projects/barsana/barsana-07.jpg",
+      "/images/projects/barsana/barsana-08.jpg",
+      "/images/projects/barsana/barsana-11.jpg",
     ],
     description:
       "A limited-edition enclave of private woodland retreats designed with tactile stone, sunken courtyards, private infinity plunge pools, and expansive glass pavilions.",
@@ -188,11 +163,11 @@ export const projects: Project[] = [
     status: "Ready to Move",
     location: "Airport Ring Road, Bhuj",
     client: "Zaveri Realty Group",
-    heroImage: "/assets/barsana/barsana-15.jpg",
+    heroImage: "/images/projects/barsana/barsana-15.jpg",
     galleryImages: [
-      "/assets/barsana/barsana-04.jpg",
-      "/assets/barsana/barsana-05.jpg",
-      "/assets/barsana/barsana-12.jpg",
+      "/images/projects/barsana/barsana-04.jpg",
+      "/images/projects/barsana/barsana-05.jpg",
+      "/images/projects/barsana/barsana-12.jpg",
     ],
     description:
       "An established luxury residential community characterized by Mediterranean facade styling, wide concrete avenues, and a vibrant community atmosphere.",
@@ -220,10 +195,10 @@ export const projects: Project[] = [
     status: "Completed",
     location: "Seven Sky Zone, Bhuj",
     client: "Zaveri Realty Group",
-    heroImage: "/assets/barsana/barsana-05.jpg",
+    heroImage: "/images/projects/barsana/barsana-05.jpg",
     galleryImages: [
-      "/assets/barsana/barsana-06.jpg",
-      "/assets/barsana/barsana-13.jpg",
+      "/images/projects/barsana/barsana-06.jpg",
+      "/images/projects/barsana/barsana-13.jpg",
     ],
     description:
       "Contemporary luxury townhomes and villas featuring expansive balconies, Italian marble finishes, and private terrace gardens.",
@@ -249,10 +224,10 @@ export const projects: Project[] = [
     status: "Completed",
     location: "Mirzapar Highway, Kutch",
     client: "Zaveri Realty Group",
-    heroImage: "/assets/barsana/barsana-07.jpg",
+    heroImage: "/images/projects/barsana/barsana-07.jpg",
     galleryImages: [
-      "/assets/barsana/barsana-08.jpg",
-      "/assets/barsana/barsana-11.jpg",
+      "/images/projects/barsana/barsana-08.jpg",
+      "/images/projects/barsana/barsana-11.jpg",
     ],
     description:
       "Expansive weekend farmhouse plots and finished luxury villas with mature organic plantations and private recreational clubs.",

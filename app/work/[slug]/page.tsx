@@ -1,8 +1,8 @@
-import OptimizedImage from "@/components/OptimizedImage";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import CubeButton from "@/components/CubeButton";
-import RollLink from "@/components/RollLink";
+import CubeButton from "@/components/ui/CubeButton";
+import RollLink from "@/components/ui/RollLink";
 import { projects } from "@/data/projects";
 import { companyDetails } from "@/data/services";
 import { ArrowLeft, CheckCircle2, Phone, MessageSquare, MapPin, Calendar, Building, Sparkles } from "lucide-react";

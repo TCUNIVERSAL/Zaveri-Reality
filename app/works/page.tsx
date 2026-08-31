@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import OptimizedImage from "@/components/OptimizedImage";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import Link from "next/link";
 import { LayoutGrid, List as ListIcon, ArrowUpRight } from "lucide-react";
 import { projects, Project } from "@/data/projects";

@@ -1,4 +1,4 @@
-import CubeButton from "@/components/CubeButton";
+import CubeButton from "@/components/ui/CubeButton";
 
 export default function NotFound() {
   return (

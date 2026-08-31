@@ -1,10 +1,10 @@
 "use client";
 
-import OptimizedImage from "@/components/OptimizedImage";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 import Link from "next/link";
 import { useState } from "react";
-import CubeButton from "@/components/CubeButton";
-import RollLink from "@/components/RollLink";
+import CubeButton from "@/components/ui/CubeButton";
+import RollLink from "@/components/ui/RollLink";
 import { projects } from "@/data/projects";
 import { companyDetails } from "@/data/services";
 import {
@@ -30,7 +30,7 @@ export default function BarsanaProjectPage() {
       <section className="relative w-full min-h-[90vh] flex flex-col justify-end pt-28 pb-16 px-4 lg:px-8 bg-[#090e18] text-white">
         <div className="absolute inset-0 z-0">
           <OptimizedImage
-            src="/assets/barsana/barsana-02.jpg"
+            src="/images/projects/barsana/barsana-02.jpg"
             alt="Barsana Grand Classical Entrance at Night"
             fill
             priority
@@ -119,7 +119,7 @@ export default function BarsanaProjectPage() {
 
           <div className="lg:col-span-6 relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
             <OptimizedImage
-              src="/assets/barsana/barsana-03.jpg"
+              src="/images/projects/barsana/barsana-03.jpg"
               alt="Barsana State of Happiness Entrance Pavilion"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -153,7 +153,7 @@ export default function BarsanaProjectPage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
             <div className="md:col-span-8 relative min-h-[360px] md:min-h-[480px] rounded-sm overflow-hidden shadow-xl group">
               <OptimizedImage
-                src="/assets/barsana/barsana-05.jpg"
+                src="/images/projects/barsana/barsana-05.jpg"
                 alt="Barsana Swimming Pool & Clubhouse at Dusk"
                 fill
                 sizes="(min-width: 768px) 66vw, 100vw"
@@ -173,7 +173,7 @@ export default function BarsanaProjectPage() {
             <div className="md:col-span-4 flex flex-col gap-6">
               <div className="relative h-56 rounded-sm overflow-hidden shadow-md group">
                 <OptimizedImage
-                  src="/assets/barsana/barsana-04.jpg"
+                  src="/images/projects/barsana/barsana-04.jpg"
                   alt="Clubhouse Grand Elevation"
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"
@@ -187,7 +187,7 @@ export default function BarsanaProjectPage() {
 
               <div className="relative h-56 rounded-sm overflow-hidden shadow-md group">
                 <OptimizedImage
-                  src="/assets/barsana/barsana-06.jpg"
+                  src="/images/projects/barsana/barsana-06.jpg"
                   alt="Gym, Banquet Hall & Indoor Games"
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"
@@ -247,7 +247,7 @@ export default function BarsanaProjectPage() {
           {/* Temple Feature */}
           <div className="lg:col-span-6 relative min-h-[400px] rounded-sm overflow-hidden shadow-2xl group">
             <OptimizedImage
-              src="/assets/barsana/barsana-09.jpg"
+              src="/images/projects/barsana/barsana-09.jpg"
               alt="Barsana Sacred Temple at Night"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -271,7 +271,7 @@ export default function BarsanaProjectPage() {
           <div className="lg:col-span-6 flex flex-col justify-between gap-6">
             <div className="relative aspect-[16/9] rounded-sm overflow-hidden shadow-xl group">
               <OptimizedImage
-                src="/assets/barsana/barsana-07.jpg"
+                src="/images/projects/barsana/barsana-07.jpg"
                 alt="Barsana Botanical Garden with Lily Pond & Bridge"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -285,7 +285,7 @@ export default function BarsanaProjectPage() {
 
             <div className="relative aspect-[16/9] rounded-sm overflow-hidden shadow-xl group">
               <OptimizedImage
-                src="/assets/barsana/barsana-11.jpg"
+                src="/images/projects/barsana/barsana-11.jpg"
                 alt="Barsana Gazebo & Campfire Lounge"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -316,7 +316,7 @@ export default function BarsanaProjectPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden shadow-xl group">
               <OptimizedImage
-                src="/assets/barsana/barsana-12.jpg"
+                src="/images/projects/barsana/barsana-12.jpg"
                 alt="Luxury Living Room & Kitchen"
                 fill
                 sizes="(min-width: 768px) 33vw, 100vw"
@@ -330,7 +330,7 @@ export default function BarsanaProjectPage() {
 
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden shadow-xl group">
               <OptimizedImage
-                src="/assets/barsana/barsana-13.jpg"
+                src="/images/projects/barsana/barsana-13.jpg"
                 alt="Master Bedroom & Balcony"
                 fill
                 sizes="(min-width: 768px) 33vw, 100vw"
@@ -344,7 +344,7 @@ export default function BarsanaProjectPage() {
 
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden shadow-xl group">
               <OptimizedImage
-                src="/assets/barsana/barsana-15.jpg"
+                src="/images/projects/barsana/barsana-15.jpg"
                 alt="Villa Night Elevation"
                 fill
                 sizes="(min-width: 768px) 33vw, 100vw"
@@ -364,7 +364,7 @@ export default function BarsanaProjectPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 sm:p-12 rounded-sm border border-contentColor/10 shadow-lg">
           <div className="relative aspect-[16/10] rounded-sm overflow-hidden shadow-md">
             <OptimizedImage
-              src="/assets/barsana/barsana-14.jpg"
+              src="/images/projects/barsana/barsana-14.jpg"
               alt="100% Renewable Energy and Golf Carts"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
@@ -444,7 +444,7 @@ export default function BarsanaProjectPage() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-8 relative aspect-[16/10] rounded-sm overflow-hidden bg-[#1a233a]">
                   <OptimizedImage
-                    src="/assets/barsana/barsana-10.jpg"
+                    src="/images/projects/barsana/barsana-10.jpg"
                     alt="Ground Floor and First Floor Layout Plan"
                     fill
                     sizes="(min-width: 1024px) 66vw, 100vw"
@@ -474,7 +474,7 @@ export default function BarsanaProjectPage() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-8 relative aspect-[16/10] rounded-sm overflow-hidden bg-[#1a233a]">
                   <OptimizedImage
-                    src="/assets/barsana/barsana-16.jpg"
+                    src="/images/projects/barsana/barsana-16.jpg"
                     alt="Barsana Master Layout Plot Inventory"
                     fill
                     sizes="(min-width: 1024px) 66vw, 100vw"
@@ -574,7 +574,7 @@ export default function BarsanaProjectPage() {
 
           <div className="lg:col-span-7 relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl bg-[#201c18]">
             <OptimizedImage
-              src="/assets/barsana/barsana-19.jpg"
+              src="/images/projects/barsana/barsana-19.jpg"
               alt="Barsana Location Map & Key Landmarks"
               fill
               sizes="(min-width: 1024px) 58vw, 100vw"

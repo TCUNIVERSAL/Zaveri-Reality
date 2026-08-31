@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import MenuDrawer from "@/components/MenuDrawer";
-import Footer from "@/components/Footer";
-import SmoothScroll from "@/components/SmoothScroll";
+import Navbar from "@/components/layout/Navbar";
+import MobileMenu from "@/components/layout/MobileMenu";
+import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 
 const serifFont = Playfair_Display({
   subsets: ["latin"],
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "Zaveri Realty Group",
     images: [
       {
-        url: "/assets/barsana/barsana-02.jpg",
+        url: "/images/projects/barsana/barsana-02.jpg",
         width: 1200,
         height: 630,
         alt: "Barsana by Zaveri Realty Group",
@@ -118,7 +118,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <MenuDrawer />
+          <MobileMenu />
         </SmoothScroll>
       </body>
     </html>
